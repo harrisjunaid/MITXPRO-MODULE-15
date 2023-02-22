@@ -6,17 +6,20 @@
   <h3 align="center">ATM COMPONENT</h3>
 
 ## About The Project
-- user balance managed through state hook destructured as [accountState , setAccountState]. This is usually stored in a bank DB.
-- user interaction deposit/withdrawal stored in local variable called deposit. That is updated in handleChange function.
-- on submit newTotal is calculated and updated through setter function called in handleSubmit function.
+
+- ATMDeposit creates input field along with a submit button
+  - input change is managed through handleSubmit method and submit event is handled through handleSubmit event.
+- global variables are used to store bank running balance, current user transaction and account balance display message.
+
+- This project is modified with bank initial balance to be $100. Note backupState within ATMDeposit does not update on rerender.
   
 
 ![](assets/account.drawio.svg)
 
 
 
-VIDEO: 15.3
-https://classroom.emeritus.org/courses/1173/pages/video-15-dot-2-15-dot-3-17-14-atm-with-html-and-atm-component?module_item_id=290784
+VIDEO: 15.4
+https://classroom.emeritus.org/courses/1173/pages/video-15-dot-4-15-dot-5-14-20-atm-in-react-and-atm-state?module_item_id=290785
 
 ### Built With
 

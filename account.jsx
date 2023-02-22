@@ -1,67 +1,56 @@
-// this keeps a running total of deposit/withdrawal
 /**
- *  called by Account( ) that is the  main function
- * @function ATMDeposit - create input field and handle input change
- * @param {function} { onChange } - handleChange for input: update deposit 
- * @returns {input} input amount: deposit/withdrawal
+ * @type {number} - transaction deposit/withdrawal
  */
-const ATMDeposit = ({ onChange }) => {
+let transactionState = 0; // state of this transaction
+/**
+ * @type {number} -BANK BALANCE
+ */
+let totalState = 100; // Account total at Bank
+/**
+ * @type {string} - account status text
+ */
+let status = `Account Balance $${totalState}`;
+/**
+ * handle input change
+ * - store input transactionState deposit/withdrawal
+ * @param {handler} e 
+ */
+const handleChange = e => {
+  console.log(`handleChange ${e.target.value}`);
+  transactionState = Number(e.target.value);
+};
+/**
+ * handle submit button
+ * - calculate bank totalState and display
+ * @param {handler} e
+ */
+const handleSubmit = e => {
+  totalState += transactionState;
+  status = `Account Balance $ ${totalState}`;
+  document.getElementById("total").innerHTML = status;
+  e.preventDefault();
+};
+/**
+ * main function
+ * @returns {input}  transaction input field with submit button
+ * @returns {status} status display
+ */
+const ATMDeposit = () => {
+  /**
+   * @description only gets initialized at the first render
+   */
+  let backupState = totalState + transactionState; 
+  let backupStatus = `Account Balance $${backupState}`;
   return (
     <label className="label huge">
       Deposit:
-      <input type="number" onChange={onChange}></input>
-      <input type="submit"></input>
+      <input type="number" onChange={handleChange}></input>
+      <input type="submit" onClick={handleSubmit}></input>
+      <h2 id="total">{status}</h2>
+      <h2 >BACKUP STATUS: {backupStatus}</h2>
     </label>
   );
 };
 
-/**
- *  main function to create the form
- *  - displaying balance
- *  - getting input deposit/withdrawal through <ATMDeposit />
- * @type {function}
- * @name Account
- * @param {null}
- * @returns {form} onSubmit event
- * @returns {number} display account balance
- * @returns {function} ATMDeposit - create input for deposit/withdrawal
- */
-const Account = () => {
-  /**
-   * @description component state: account balance usually stored in bank
-   * @name accountState
-   */
-  const [accountState, setAccountState] = React.useState(0);
-  /**
-   * @type {number} - to store input
-   */
-  var deposit = 0;
-
-  /**
-   * @function handleChange - store updated input in deposit
-   * @param {  handler } e - event handler
-   */
-  const handleChange = e => {
-    console.log(`handleChange ${e.target.value}`);
-    deposit = Number(e.target.value);
-  };
-  /**
-   * @function handleSubmit - form submit: setAccountState(newTotal)
-   * @param {handler} e 
-   */
-  const handleSubmit = e => {
-    let newTotal = accountState + deposit;
-    alert(`Account total = ${newTotal}`);
-    setAccountState(newTotal);
-    e.preventDefault();
-  };
-
-  return (
-    <form onSubmit={handleSubmit}>
-      <h2>Account Balance {accountState}</h2>     
-      <ATMDeposit onChange={handleChange}> Deposit</ATMDeposit>
-    </form>
-  );
-};
 // ========================================
-ReactDOM.render(<Account />, document.getElementById("root"));
+ReactDOM.render(<ATMDeposit />, document.getElementById("root"));
