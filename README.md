@@ -7,12 +7,11 @@
 
 ## About The Project
 
-logic for input change and submit handle along with global variables are moved into ATMDeposit ( )
-- ATMDeposit creates input field along with a submit button
+The logic for input change and submit handle along with variables (running balance, current user transaction and account balance display message) have moved into Account parent component.
+- Account simulates bank
+- ATMDeposit simulates ATM which creates input field along with a submit button
   - input change is managed through handleSubmit method and submit event is handled through handleSubmit event.
-- global variables are used to store bank running balance, current user transaction and account balance display message.
 
-- This project is modified with bank initial balance to be $100. Note backupState within ATMDeposit does not update on rerender.
   
 
 ![](assets/account.drawio.svg)
