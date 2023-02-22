@@ -6,7 +6,7 @@
   <h3 align="center">ATM COMPONENT</h3>
 
 ## About The Project
-- user balance managed through state hook destructured as [accountState , setAccountState]. This is usually stored in a banks DB.
+- user balance managed through state hook destructured as [accountState , setAccountState]. This is usually stored in a bank DB.
 - user interaction deposit/withdrawal stored in local variable called deposit updated in handleChange function.
 - on submit newTotal is calculated and updated through setter function called in handleSubmit function.
   
