@@ -1,4 +1,11 @@
+
 /**
+ * main function
+ * @returns {input}  transaction input field with submit button
+ * @returns {status} status display
+ */
+const ATMDeposit = () => {
+  /**
  * @type {number} - transaction deposit/withdrawal
  */
 let transactionState = 0; // state of this transaction
@@ -30,12 +37,6 @@ const handleSubmit = e => {
   document.getElementById("total").innerHTML = status;
   e.preventDefault();
 };
-/**
- * main function
- * @returns {input}  transaction input field with submit button
- * @returns {status} status display
- */
-const ATMDeposit = () => {
   /**
    * @description only gets initialized at the first render
    */
