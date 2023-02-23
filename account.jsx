@@ -42,16 +42,16 @@ const Account = () => {
  * - store input transactionState deposit/withdrawal
  * @param {handler} e 
  */
-  const handleChange = event => {
-    console.log(`handleChange ${event.target.value}`);
-    transactionState = Number(event.target.value);
+  const handleChange = e => {
+    console.log(`handleChange ${e.target.value}`);
+    transactionState = Number(e.target.value);
   };
   /**
  * handle submit button
  * - calculate bank totalState and display
 //  * @param {handler} e
  */
-  const handleSubmit = (e) => {//event is not required?
+  const handleSubmit = (e) => {//event is better added
     totalState += transactionState;
     status = `Account Balance $ ${totalState}`;
     document.getElementById("total").innerHTML = status;
