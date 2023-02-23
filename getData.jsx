@@ -1,35 +1,76 @@
-function App() {
-  const { Container } = ReactBootstrap;
-  const { useState, useEffect } = React;
-  const [data, setData] = useState({ hits: [] });
-  const [query, setQuery] = useState("MIT");
-  const [isError, setIsError] = useState(false);
-  const [url, setUrl] = useState(
-    "https://hn.algolia.com/api/v1/search?query=MIT"
-  );
-  const [isLoading, setIsLoading] = React.useState(false);
-  console.log("Rendering App");
-  
-  useEffect(() => {   // Handles the LifeCycle Events
-    console.log("Fetching data...");
+const useDataApi = (initialUrl, initialData) => {
+  const { useState, useEffect, useReducer } = React;
+  const [url, setUrl] = useState(initialUrl);
+
+  const [state, dispatch] = useReducer(dataFetchReducer, {
+    isLoading: false,
+    isError: false,
+    data: initialData
+  });
+
+  useEffect(() => {
+    let didCancel = false;
     const fetchData = async () => {
-      setIsLoading(true);
+      dispatch({ type: "FETCH_INIT" });
       try {
         const result = await axios(url);
-        setData(result.data);
+        if (!didCancel) {
+          dispatch({ type: "FETCH_SUCCESS", payload: result.data });
+        }
       } catch (error) {
-        setIsError(true);
+        if (!didCancel) {
+          dispatch({ type: "FETCH_FAILURE" });
+        }
       }
-      setIsLoading(false);
     };
-
     fetchData();
+    return () => {
+      didCancel = true;
+    };
   }, [url]);
+  return [state, setUrl];
+};
+const dataFetchReducer = (state, action) => {
+  switch (action.type) {
+    case "FETCH_INIT":
+      return {
+        ...state,
+        isLoading: true,
+        isError: false
+      };
+    case "FETCH_SUCCESS":
+      return {
+        ...state,
+        isLoading: false,
+        isError: false,
+        data: action.payload
+      };
+    case "FETCH_FAILURE":
+      return {
+        ...state,
+        isLoading: false,
+        isError: true
+      };
+    default:
+      throw new Error();
+  }
+};
+
+function App() {
+  const { Fragment, useState, useEffect, useReducer } = React;
+  const [query, setQuery] = useState("MIT");
+  const [{ data, isLoading, isError }, doFetch] = useDataApi(
+    "https://hn.algolia.com/api/v1/search?query=MIT",
+    {
+      hits: []
+    }
+  );
+
   return (
-    <Container>
+    <Fragment>
       <form
         onSubmit={event => {
-          setUrl(`http://hn.algolia.com/api/v1/search?query=${query}`);
+          doFetch(`http://hn.algolia.com/api/v1/search?query=${query}`);
 
           event.preventDefault();
         }}
@@ -41,6 +82,7 @@ function App() {
         />
         <button type="submit">Search</button>
       </form>
+
       {isError && <div>Something went wrong ...</div>}
 
       {isLoading ? (
@@ -54,8 +96,9 @@ function App() {
           ))}
         </ul>
       )}
-    </Container>
+    </Fragment>
   );
 }
+
 // ========================================
 ReactDOM.render(<App />, document.getElementById("root"));
