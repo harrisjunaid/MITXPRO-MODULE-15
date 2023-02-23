@@ -3,24 +3,22 @@
 
 
 
-  <h3 align="center">ATM COMPONENT</h3>
+  <h3 align="center">FETCHING DATA: Local Machine</h3>
 
 ## About The Project
 
-logic for input change and submit handle along with global variables are moved into ATMDeposit ( )
-- ATMDeposit creates input field along with a submit button
-  - input change is managed through handleSubmit method and submit event is handled through handleSubmit event.
-- global variables are used to store bank running balance, current user transaction and account balance display message.
+getting data is called a side effect in web components and doesent affect rendering
+part of the life cycle and can be controlled in useEffect
 
-- This project is modified with bank initial balance to be $100. Note backupState within ATMDeposit does not update on rerender.
+useReduce to keep track of states
   
 
 ![](assets/account.drawio.svg)
 
 
 
-VIDEO: 15.4
-https://classroom.emeritus.org/courses/1173/pages/video-15-dot-4-15-dot-5-14-20-atm-in-react-and-atm-state?module_item_id=290785
+VIDEO: 15.7
+https://classroom.emeritus.org/courses/1173/pages/video-15-dot-7-15-dot-8-10-10-fetching-data-exercise-overview-and-fetch-data-via-a-url-with-useeffect?module_item_id=290790
 
 ### Built With
 
@@ -28,6 +26,12 @@ https://classroom.emeritus.org/courses/1173/pages/video-15-dot-4-15-dot-5-14-20-
 - React
 - Bootstrap
 
+### Requirement
+
+- Run and Install http-server on localhost:8080
+--  npm install -g http-server 
+-- http-server 
+--  http-server -a localhost -p 8080 -c-1 
 
 ## License
 
