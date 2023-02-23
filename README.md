@@ -7,6 +7,9 @@
 
 ## About The Project
 
+ status should not be rendered in DOM because React shadow DOM does not know what is beign done directly into the actual DOM.
+    document.getElementById("total").innerHTML = status; on line 57
+
 The logic for input change and submit handle along with variables (running balance, current user transaction and account balance display message) have moved into Account parent component.
 - Account simulates bank which 
   - creates form

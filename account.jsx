@@ -25,36 +25,53 @@ const ATMDeposit = ({ onChange }) => {
  * - handles onSubmit
  */
 const Account = () => {
- /**
- * @type {number} - transaction deposit/withdrawal
- */
+  console.log('Rendered: Account()');
   let transactionState = 0; // state of this transaction
   /**
- * @type {number} -BANK BALANCE
+ * DO NOT USE:
+ * - let totalState = 100; // Account total at Bank
+ * USE:
+ * - const [totalState, setTotalState] = React.useState(0);
  */
-  let totalState = 100; // Account total at Bank
+  const [totalState, setTotalState] = React.useState(100); //bank state
   /**
  * @type {string} - account status text
  */
   let status = `Account Balance $${totalState}`;
   /**
+   * DO NOT USE:
+   * - let status = 'zero';
+   * because on rerender fired from setTotalState status = 'zero'
+   * and "status = `Account Balance $ ${totalState}`;" is not executed
+   */
+  /**
  * handle input change
  * - store input transactionState deposit/withdrawal
  * @param {handler} e 
  */
-  const handleChange = event => {
-    console.log(`handleChange ${event.target.value}`);
-    transactionState = Number(event.target.value);
+  const handleChange = e => {
+    console.log(`handleChange ${e.target.value}`);
+    transactionState = Number(e.target.value);
   };
   /**
  * handle submit button
  * - calculate bank totalState and display
-//  * @param {handler} e
+ * @param {handler} e
  */
   const handleSubmit = (e) => {//event is not required?
-    totalState += transactionState;
-    status = `Account Balance $ ${totalState}`;
-    document.getElementById("total").innerHTML = status;
+    /**
+     * DO NOT USE:
+     * - totalState += transactionState;
+     * USE:
+     * - state setter function to fire a rerender 
+     */
+    setTotalState(totalState + transactionState);    
+    // status = `Account Balance $ ${totalState}`;
+    /**
+     * should not directly wright into actual DOM 
+     * - React shadow DOM does not know what is being done in actual DOM
+     * document.getElementById("total").innerHTML = status;
+     */
     e.preventDefault();
   };
   return (
