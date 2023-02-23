@@ -5,10 +5,11 @@
  * @returns {input}  transaction input field with submit button
  * @returns {status} status display
  */
-const ATMDeposit = ({ onChange }) => {
+const ATMDeposit = ({ onChange, isDeposit }) => {
+  const choice = ["Deposit", "Cash Back"];{/*15.6*/}
   return (
     <label className="label huge">
-      Deposit:
+      <h4>{choice[Number(!isDeposit)]}</h4>{/*15.6*/}
       <input type="number" onChange={onChange}></input>
       <input type="submit" value="Submit"></input>
     </label>
@@ -34,6 +35,7 @@ const Account = () => {
  * - const [totalState, setTotalState] = React.useState(0);
  */
   const [totalState, setTotalState] = React.useState(100); //bank state
+  const [isDeposit, setIsDeposit] = React.useState(true); // 15.6
   /**
  * @type {string} - account status text
  */
@@ -58,15 +60,22 @@ const Account = () => {
  * - calculate bank totalState and display
  * @param {handler} e
  */
-  const handleSubmit = (e) => {//event is not required?
+  const handleSubmit = (e) => {
+    let newTotal = isDeposit ? totalState + transactionState : totalState - transactionState; //15.6
     /**
      * DO NOT USE:
      * - totalState += transactionState;
      * USE:
      * - state setter function to fire a rerender 
      */
-    setTotalState(totalState + transactionState);    
-    // status = `Account Balance $ ${totalState}`;
+    setTotalState(newTotal);    
+    /** 
+     * "status = `Account Balance $ ${totalState}`;"
+     * already done outside handleSubmit
+     * and is called at every rerender 
+     * fired throuhg setTotalState( )
+     * 
+    */
     /**
      * should not directly wright into actual DOM 
      * - React shadow DOM does not know what is being done in actual DOM
@@ -77,7 +86,9 @@ const Account = () => {
   return (
     <form onSubmit={handleSubmit}>
       <h2 id="total">{status}</h2>
-      <ATMDeposit onChange={handleChange}> Deposit</ATMDeposit>
+      <button onClick={()=>setIsDeposit(true)}>Deposit</button>{/*15.6*/}
+      <button onClick={()=>setIsDeposit(false)}>Cash Back</button>{/*15.6*/}
+      <ATMDeposit onChange={handleChange} isDeposit={isDeposit}> Deposit</ATMDeposit>
     </form>
   );
 };
