@@ -8,7 +8,7 @@
 ## About The Project
 
 getting data is called a side effect in web components and doesent affect rendering
-part of the life cycle and can be controlled in useEffect
+part of the life cycle and can be controlled in useEffect. useEffect it self does not cause a re-render.
 
 useReduce to keep track of states
   
