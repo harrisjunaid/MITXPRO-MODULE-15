@@ -16,7 +16,7 @@ const ATMDeposit = ({ onChange }) => {
 };
 
 /**
- * MAIN FUNCTION: Parent Component
+ * Parent Component
  * - Simulates Bank: keep record of balance
  * @returns {form} 
  * @description 
