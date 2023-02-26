@@ -7,7 +7,7 @@
 
 ## About The Project
 
-logic for input change and submit handle along with global variables are moved into ATMDeposit ( )
+**Program's logic for input change and submit handle along with global variables have moved inside ATMDeposit ( )**
 - ATMDeposit creates input field along with a submit button
   - input change is managed through handleSubmit method and submit event is handled through handleSubmit event.
 - global variables are used to store bank running balance, current user transaction and account balance display message.
@@ -19,9 +19,10 @@ logic for input change and submit handle along with global variables are moved i
 
 
 
-VIDEO: 15.4
+**VIDEO: 15.4**
 https://classroom.emeritus.org/courses/1173/pages/video-15-dot-4-15-dot-5-14-20-atm-in-react-and-atm-state?module_item_id=290785
 
+NOTE: Hover over function names to view their description
 ### Built With
 
 - HTML

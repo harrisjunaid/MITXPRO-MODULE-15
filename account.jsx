@@ -46,7 +46,7 @@ const handleSubmit = e => {
     <label className="label huge">
       Deposit:
       <input type="number" onChange={handleChange}></input>
-      <input type="submit" onClick={handleSubmit}></input>
+      <input type="submit" value="Submit" onClick={handleSubmit}></input>
       <h2 id="total">{status}</h2>
       <h2 >BACKUP STATUS: {backupStatus}</h2>
     </label>
