@@ -1,6 +1,6 @@
 
 /**
- * called by Account( )
+ * child of Account( )
  * @param {event} onChange
  * @returns {input}  transaction input field with submit button
  * @returns {status} status display
