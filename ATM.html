@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ATM: HTML</title>
 </head>
 <body>  
   <h1>ATM Example</h1>
@@ -12,12 +12,21 @@
       Deposit:
       <input type="number" onchange="handleChange(value)"></input>
       <input type="submit" onclick="handleSubmit()"></input>
-      <h2 id="total">Account Balance $Zero</h2>
+      <!-- <h2 id="total">Account Balance $Zero</h2> -->
+      <h2 id="total"></h2>
   </label>
   <script>
+      /**
+       * @description simulating ATM transaction deposit/withdraw
+      */
       let transactionState = 0;
-      let totalState = 0;
-      let status = "Account Balance $zero";
+      /**
+       * @description simulating bank account total: $100
+      */
+      let totalState = 100;
+      let status = `Account Balance $${totalState}`;
+      document.getElementById("total").innerHTML = status;
+
       const handleChange = value => {
           console.log(`handleChange ${value}`);
           transactionState = Number(value);
