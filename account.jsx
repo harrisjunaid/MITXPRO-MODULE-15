@@ -11,7 +11,7 @@ let totalState = 100; // Account total at Bank
  */
 let status = `Account Balance $${totalState}`;
 /**
- * handle input change
+ * handle input change: callback function
  * - store input transactionState deposit/withdrawal
  * @param {handler} e 
  */
@@ -20,7 +20,7 @@ const handleChange = e => {
   transactionState = Number(e.target.value);
 };
 /**
- * handle submit button
+ * handle submit button: callback function
  * - calculate bank totalState and display
  * @param {handler} e
  */
@@ -31,7 +31,7 @@ const handleSubmit = e => {
   e.preventDefault();
 };
 /**
- * main function
+ * functional component
  * @returns {input}  transaction input field with submit button
  * @returns {status} status display
  */
