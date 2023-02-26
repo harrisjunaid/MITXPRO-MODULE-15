@@ -3,7 +3,7 @@
 
 ## About The Project
 
-
+- **Deposit/Cash Back buttons have been rendered and logic is controlled through state variable isDeposit.**
 
 
 
