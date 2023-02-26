@@ -6,17 +6,19 @@
   <h3 align="center">ATM COMPONENT</h3>
 
 ## About The Project
-- user balance managed through state hook destructured as [accountState , setAccountState]. This is usually stored in a bank DB.
-- user interaction deposit/withdrawal stored in local variable called deposit. That is updated in handleChange function.
-- on submit newTotal is calculated and updated through setter function called in handleSubmit function.
+- user balance managed through state hook destructured as [*accountState , setAccountState*]. This is usually stored in a **bank DB**.
+- **user interaction** deposit/withdrawal stored in local variable called *deposit*. That is updated in *handleChange* function.
+- on **submit** newTotal is calculated and updated through setter function called in *handleSubmit* function.
   
 
 ![](assets/account.drawio.svg)
 
 
 
-VIDEO: 15.3
+**VIDEO: 15.3**
 https://classroom.emeritus.org/courses/1173/pages/video-15-dot-2-15-dot-3-17-14-atm-with-html-and-atm-component?module_item_id=290784
+
+NOTE: Hover over functions in account.jsx for their description.
 
 ### Built With
 

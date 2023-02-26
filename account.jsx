@@ -1,7 +1,7 @@
 // this keeps a running total of deposit/withdrawal
 /**
- *  called by Account( ) that is the  main function
- * @function ATMDeposit - create input field and handle input change
+ *  child of Account( )
+ * @function ATMDeposit - creates an input field and handles its change
  * @param {function} { onChange } - handleChange for input: update deposit 
  * @returns {input} input amount: deposit/withdrawal
  */
@@ -21,10 +21,10 @@ const ATMDeposit = ({ onChange }) => {
  *  - getting input deposit/withdrawal through <ATMDeposit />
  * @type {function}
  * @name Account
- * @param {null}
- * @returns {form} onSubmit event
- * @returns {number} display account balance
- * @returns {function} ATMDeposit - create input for deposit/withdrawal
+ * @returns {form} onSubmit handled by handleSubmit
+ * includes:
+ * - {number} display account balance
+ * - {function} ATMDeposit - create input for deposit/withdrawal
  */
 const Account = () => {
   /**
