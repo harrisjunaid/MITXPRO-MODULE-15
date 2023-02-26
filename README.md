@@ -1,21 +1,19 @@
 
-
-
-
-
-  <h3 align="center">TODO LIST BOOTSTRAP</h3>
+  <h3 align="center">ATM</h3>
 
 
 ## About The Project
 
-This is an extension of TODO LIST project. Addition is of bootstrap style.
+ATM implementation in HTML.
 
+![Alt text](assets/chart.drawio.svg)
 
+**Video 15.2:** ATM With HTML And ATM Component
+https://classroom.emeritus.org/courses/1173/pages/video-15-dot-2-15-dot-3-17-14-atm-with-html-and-atm-component?module_item_id=290784
 ### Built With
-
-- React
+  
 - HTML
-- Bootstrap
+
 
 
 ## License
