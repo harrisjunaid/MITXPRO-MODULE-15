@@ -12,7 +12,7 @@ part of the life cycle and can be controlled in useEffect. useEffect it self doe
 
 useReduce to keep track of states
   
-
+https://github.com/harrisjunaid/MITXPRO-MODULE-15/blob/15.08-FETCHING-DATA-LOCAL/assets/2023-02-23-16-48-38.mp4
 ![](assets/account.drawio.svg)
 
 
