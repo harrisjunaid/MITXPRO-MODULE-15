@@ -7,7 +7,7 @@
 
 ## About The Project
 
-The logic for input change and submit handle along with variables (running balance, current user transaction and account balance display message) have moved from *ATMDeposit* into *Account* parent component.
+**The logic for input change and submit handle along with variables (running balance, current user transaction and account balance display message) have moved from *ATMDeposit* into *Account* parent component.**
 - **Account** simulates bank which 
   - creates form
   - gets input from ATMDeposit child
