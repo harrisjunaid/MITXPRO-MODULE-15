@@ -11,7 +11,10 @@ getting data is called a side effect in web components and doesent affect render
 part of the life cycle and can be controlled in useEffect. useEffect it self does not cause a re-render.
 
 useReduce to keep track of states
-https://user-images.githubusercontent.com/51511122/221484203-c4e8400e-1220-4c9d-9d1d-21aa86647441.mp4
+
+
+https://user-images.githubusercontent.com/51511122/221484611-5c03d7ed-4828-4539-8ddf-0b4589f0ce6d.mp4
+
 
 ![](assets/account.drawio.svg)
 
