@@ -1,9 +1,21 @@
 function App() {
   const { Container } = ReactBootstrap;
   const { useState, useEffect } = React;
+  /**
+   * keeping track of data that is coming back
+   */
   const [data, setData] = useState({ hits: [] });
+  /**
+   * keeping track of query to query different parts of hacker news
+   */
   const [query, setQuery] = useState("MIT");
+  /**
+   * keeping track of error
+   */
   const [isError, setIsError] = useState(false);
+  /**
+   * keeping track of URL
+   */
   const [url, setUrl] = useState(
     "https://hn.algolia.com/api/v1/search?query=MIT"
   );

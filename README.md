@@ -2,6 +2,9 @@
 
 ## About The Project
 
+going out to Hacker News and
+getting MIT's news events
+
 - useEffect( ) is keeping track of [url].
 - if blank: 
    - as blank, it would go out every time and useEffect
