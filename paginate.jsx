@@ -1,9 +1,17 @@
 const Pagination = ({ items, pageSize, onPageChange }) => {
   const { Button } = ReactBootstrap;
-  if (items.length <= 1) return null;
+  if (items.length <= 1) {console.log("no items for Pagination"); return null; /*return if no items*/}
 
-  let num = Math.ceil(items.length / pageSize);
-  let pages = range(1, num + 1);
+  let num = Math.ceil(items.length / pageSize);//round up items 
+  let pages = range(1, num + 1);//range(start=1, end=num+1)
+  
+  /**
+   * @function
+   * @name list
+   * @returns Bootstrap Buttons
+   * @description
+   * create page buttons and link them with onPageChange
+   */
   const list = pages.map(page => {
     return (
       <Button key={page} onClick={onPageChange} className="page-item">
@@ -17,24 +25,52 @@ const Pagination = ({ items, pageSize, onPageChange }) => {
     </nav>
   );
 };
-const range = (start, end) => {
-  return Array(end - start + 1)
-    .fill(0)
-    .map((item, i) => start + i);
-};
+
+  /**
+   * 
+   * @param {number} start 
+   * @param {number} end 
+   * @returns {array} - of elemments between start - end
+   * @description
+   * helper function for Pagination
+   */
+  const range = (start, end) => {  
+    let arrayTotalElements = end - start + 1;
+    let emptyArray = Array(arrayTotalElements);
+    console.log(emptyArray);
+    let fillZero = emptyArray.fill(0); //because map doesnt work with empty array
+    console.log(fillZero);
+    let rangeArray = fillZero.map((item, i) => start + i);
+    console.log(rangeArray);
+    return rangeArray;
+    // return Array(end - start + 1)
+    //   .fill(0)
+    //   .map((item, i) => start + i);
+  };
+
+/**
+ * 
+ * @param {number} items - total items
+ * @param {number} pageNumber - selected page
+ * @param {number} pageSize - items per page 
+ * @returns items for pageNumber
+ * @description 
+ * helper function for Pagination
+ */
 function paginate(items, pageNumber, pageSize) {
   const start = (pageNumber - 1) * pageSize;
   let page = items.slice(start, start + pageSize);
   return page;
 }
 
-/**
- * custom hook
- * - used to manage a number of state variables
- * @param {*} initialUrl 
- * @param {*} initialData 
- * @returns 
- */
+  /**
+   *
+   * @param {*} initialUrl 
+   * @param {*} initialData 
+   * @returns 
+   * @description
+   * custom hook to manage a number of state varuables
+   */
 const useDataApi = (initialUrl, initialData) => {
   const { useState, useEffect, useReducer } = React;
   const [url, setUrl] = useState(initialUrl);
